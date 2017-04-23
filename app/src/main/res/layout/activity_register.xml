@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.niit.greenrouse.RegisterActivity">
+    tools:context="com.example.niit.greenrouse.Activity.RegisterActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_RegistName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="请输入用户名"
+            android:inputType="text" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#000000" />
+
+        <EditText
+            android:id="@+id/et_RegistPwd"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#000000" />
+
+        <EditText
+            android:id="@+id/et_RegistPwd2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="确认密码"
+            android:inputType="textPassword" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#000000" />
+
+        <Button
+            android:id="@+id/btn_Regist"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="#3CB371"
+            android:text="注册"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>
