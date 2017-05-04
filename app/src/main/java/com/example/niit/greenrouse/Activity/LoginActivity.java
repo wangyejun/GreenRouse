@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         //控件初始化
         initView();
+        initEvent();
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,5 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         Login = (Button) findViewById(R.id.btn_Login);
         Regist = (TextView) findViewById(R.id.tv_regist);
     }
-
+    private void initEvent(){
+        Regist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }

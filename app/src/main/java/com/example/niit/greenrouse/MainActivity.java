@@ -2,6 +2,8 @@ package com.example.niit.greenrouse;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.widget.RadioGroup;
 
 import com.example.niit.greenrouse.Fragment.BenefitFragment;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         InitView();
         InitEvent();
     }
+
+
     private void InitView(){
         radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
         radioGroup.check(R.id.rb_home);

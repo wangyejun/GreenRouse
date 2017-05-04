@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login"
     tools:context="com.example.niit.greenrouse.Activity.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <EditText
             android:id="@+id/et_RegistName"
@@ -68,12 +70,13 @@
 
         <Button
             android:id="@+id/btn_Regist"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:background="#3CB371"
+            android:background="@drawable/loginbutton"
             android:text="注册"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_weight="0.10" />
     </LinearLayout>
 </LinearLayout>
