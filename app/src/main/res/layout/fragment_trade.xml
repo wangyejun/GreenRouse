@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backdrop"
-    tools:context="com.example.niit.greenrouse.Fragment.TradeFragment">
+    tools:context="com.example.niit.greenrouse.MainActivity"
+    android:orientation="vertical"
+    android:background="@drawable/backdrop">
+
+
+    <ImageView
+        android:id="@+id/img_mobai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        app:srcCompat="@mipmap/bike"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/img_didi" />
+
+    <ImageView
+        android:id="@+id/img_didi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/taxi"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/img_mobai"
+        android:layout_alignStart="@+id/img_meituan" />
+
+    <ImageView
+        android:id="@+id/img_meituan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        app:srcCompat="@mipmap/buy"
+        android:layout_below="@+id/img_didi"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="#000"
-        android:textSize="30sp"
-        android:text="换吧"/>
+        android:id="@+id/tv_mobai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="摩拜单车骑行时间"
+        android:textSize="25dp"
+        android:layout_above="@+id/img_didi"
+        android:layout_alignEnd="@+id/img_mobai"
+        android:layout_marginEnd="31dp" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_didi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="滴滴出行折扣券"
+        android:textSize="25dp"
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/img_meituan"
+        android:layout_alignStart="@+id/tv_mobai" />
+
+    <TextView
+        android:id="@+id/tv_meituan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="美团商家抵用券"
+        android:textSize="25dp"
+        android:layout_alignBottom="@+id/img_meituan"
+        android:layout_alignStart="@+id/tv_didi" />
+</RelativeLayout>
+
