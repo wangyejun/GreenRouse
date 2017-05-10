@@ -25,21 +25,16 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
         initView();
 
         if (toolbar!=null){
-            //Fragment用ToolBar需要抢转
+            //Fragment用ToolBar需要强转
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         }
     }
 
     private void initView() {
         toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.toolbar,menu);
     }
 }
