@@ -29,11 +29,11 @@ public class HomeFragment extends Fragment {
         initView();
 
         if (toolbar!=null){
+            toolbar.setTitle("");
             //Fragment用ToolBar需要强转
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         }
     }
-
     private void initView() {
         toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
     }

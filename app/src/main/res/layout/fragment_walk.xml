@@ -9,6 +9,26 @@
     tools:context="com.example.niit.greenrouse.Fragment.WalkFragment">
 
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentInsetRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="行走的力量"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:textColor="#fff"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/share"
+            android:layout_gravity="right"/>
+    </android.support.v7.widget.Toolbar>
+
+
     <ImageView
         android:id="@+id/img_greenback"
         android:layout_width="wrap_content"
@@ -66,9 +86,5 @@
         android:layout_alignBottom="@+id/img_fruit"
         android:layout_toStartOf="@+id/img_fruit"
         android:layout_marginEnd="27dp" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 
 </RelativeLayout>
