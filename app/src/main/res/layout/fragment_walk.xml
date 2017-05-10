@@ -66,6 +66,9 @@
         android:layout_alignBottom="@+id/img_fruit"
         android:layout_toStartOf="@+id/img_fruit"
         android:layout_marginEnd="27dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>
