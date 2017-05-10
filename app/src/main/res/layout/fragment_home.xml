@@ -33,9 +33,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/scan"
-            android:layout_gravity="right"
-            />
+            android:layout_gravity="right" />
     </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试"/>
 
 
 </LinearLayout>
