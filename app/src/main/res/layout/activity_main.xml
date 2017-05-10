@@ -1,69 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.niit.greenrouse.MainActivity"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/framlayout"
+
+    <include
+        layout="@layout/item_sliding"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
-    </FrameLayout>
+        android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/radiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/framlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </FrameLayout>
 
-        <RadioButton
-            android:id="@+id/rb_home"
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@mipmap/home"
-            android:button="@null"
-            android:gravity="center_horizontal" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rb_benefit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:background="@mipmap/benefit"
-            android:gravity="center_horizontal" />
+            <RadioButton
+                android:id="@+id/rb_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@mipmap/home"
+                android:button="@null"
+                android:gravity="center_horizontal" />
 
-        <RadioButton
-            android:id="@+id/rb_trade"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:background="@mipmap/trade"
-            android:gravity="center_horizontal"
-            />
+            <RadioButton
+                android:id="@+id/rb_benefit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@mipmap/benefit"
+                android:gravity="center_horizontal" />
 
-        <RadioButton
-            android:id="@+id/rb_walk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@mipmap/walk"
-            android:button="@null"
-            android:gravity="center_horizontal" />
+            <RadioButton
+                android:id="@+id/rb_trade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@mipmap/trade"
+                android:gravity="center_horizontal"
+                />
 
-        <RadioButton
-            android:id="@+id/rb_knapsack"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:background="@mipmap/knapsack"
-            android:gravity="center_horizontal"
-            />
-    </RadioGroup>
-</LinearLayout>
+            <RadioButton
+                android:id="@+id/rb_walk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@mipmap/walk"
+                android:button="@null"
+                android:gravity="center_horizontal" />
+
+            <RadioButton
+                android:id="@+id/rb_knapsack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@mipmap/knapsack"
+                android:gravity="center_horizontal" />
+        </RadioGroup>
+
+    </LinearLayout>
+</android.support.v4.widget.SlidingPaneLayout>
