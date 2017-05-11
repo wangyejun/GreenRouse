@@ -3,6 +3,8 @@ package com.example.niit.greenrouse;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -14,6 +16,7 @@ import com.example.niit.greenrouse.Fragment.HomeFragment;
 import com.example.niit.greenrouse.Fragment.KnapsackFragment;
 import com.example.niit.greenrouse.Fragment.TradeFragment;
 import com.example.niit.greenrouse.Fragment.WalkFragment;
+import com.example.niit.greenrouse.util.AppUtil;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
     private RadioGroup radioGroup;
@@ -60,7 +63,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     public void InitEvent() {
+        //显示APP版本号
+        tv_versionName.setText(getString(R.string.app_name)+":"+AppUtil.getVersionName(MainActivity.this));
+
         radioGroup.setOnCheckedChangeListener(this);
+
+
     }
 
     @Override
