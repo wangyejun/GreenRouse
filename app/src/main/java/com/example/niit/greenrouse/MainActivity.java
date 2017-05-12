@@ -1,10 +1,10 @@
 package com.example.niit.greenrouse;
 
 import android.os.Bundle;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -18,14 +18,11 @@ import com.example.niit.greenrouse.Fragment.TradeFragment;
 import com.example.niit.greenrouse.Fragment.WalkFragment;
 import com.example.niit.greenrouse.util.AppUtil;
 
+import cn.bmob.v3.Bmob;
+
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
     private RadioGroup radioGroup;
 
-    HomeFragment homeFragment = new HomeFragment();
-    BenefitFragment benefitFragment = new BenefitFragment();
-    TradeFragment tradeframent = new TradeFragment();
-    KnapsackFragment knapsackfranment = new KnapsackFragment();
-    WalkFragment walkFragment = new WalkFragment();
     private ImageView iv_head_show;//侧滑菜单头像-头像
     private TextView tv_head_show;//侧滑菜单-昵称
     private Button btn_donation;//侧滑菜单-公益捐款
@@ -33,15 +30,33 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private Button btn_my_work;//侧滑菜单-我的行走
     private TextView tv_versionName;//侧滑菜单-版本号
 
+    public SlidingPaneLayout slidingPane;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bmob.initialize(this,"8cb6a5617d6829c540f1515ffccd79e1");
         setContentView(R.layout.activity_main);
-
         initView();
         InitEvent();
     }
 
+    //单点back键提示在按一次
+    //退出程序，双击back键时退出程序
+    private long exitTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            if (System.currentTimeMillis()-exitTime>2000){
+                Toast.makeText(this, "在按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            }else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     private void initView() {
         radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
@@ -54,40 +69,43 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         btn_my_work = (Button) findViewById(R.id.btn_my_work);
         tv_versionName = (TextView) findViewById(R.id.tv_versionName);
 
+        slidingPane= (SlidingPaneLayout) findViewById(R.id.slidingPane);
+
         btn_donation.setOnClickListener(this);
         btn_my_exchange.setOnClickListener(this);
         btn_my_work.setOnClickListener(this);
 
-        radioGroup.check(R.id.rb_home);
-        getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, homeFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new HomeFragment()).commit();
     }
 
     public void InitEvent() {
         //显示APP版本号
         tv_versionName.setText(getString(R.string.app_name)+":"+AppUtil.getVersionName(MainActivity.this));
-
         radioGroup.setOnCheckedChangeListener(this);
+    }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int i) {
         switch (i) {
             case R.id.rb_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, homeFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new HomeFragment()).commit();
                 break;
             case R.id.rb_benefit:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, benefitFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new BenefitFragment()).commit();
                 break;
             case R.id.rb_trade:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, tradeframent).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new TradeFragment()).commit();
                 break;
             case R.id.rb_walk:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, walkFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new WalkFragment()).commit();
                 break;
             case R.id.rb_knapsack:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, knapsackfranment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new KnapsackFragment()).commit();
         }
 
     }

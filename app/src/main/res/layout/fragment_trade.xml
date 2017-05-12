@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.niit.greenrouse.MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/backdrop">
+    android:background="@mipmap/backdrop">
 
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentInsetRight="10dp">
+        app:contentInsetRight="10dp"
+        android:id="@+id/toolbar2">
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,19 +34,19 @@
         android:id="@+id/img_mobai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="50dp"
         app:srcCompat="@mipmap/bike"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/img_didi" />
+        android:layout_below="@+id/toolbar2"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/img_didi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/taxi"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/img_mobai"
-        android:layout_alignStart="@+id/img_meituan" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/img_meituan"
