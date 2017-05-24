@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bmob.initialize(this,"8cb6a5617d6829c540f1515ffccd79e1");
         setContentView(R.layout.activity_main);
         initView();
         InitEvent();

@@ -11,7 +11,8 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentInsetRight="10dp">
+        app:contentInsetRight="10dp"
+        android:id="@+id/toolbar3">
 
         <ImageView
             android:id="@+id/ivbenefit_personage"
@@ -34,6 +35,7 @@
             android:src="@mipmap/scan"
             android:layout_gravity="right" />
     </android.support.v7.widget.Toolbar>
+
     <ImageView
         android:id="@+id/img_square1"
         android:layout_width="wrap_content"
@@ -81,10 +83,10 @@
         android:id="@+id/img_fruit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/fruit"
+        android:layout_marginStart="12dp"
         android:layout_above="@+id/img_square4"
-        android:layout_marginStart="26dp"
-        android:layout_toEndOf="@+id/img_square3"
-        app:srcCompat="@mipmap/fruit" />
+        android:layout_toEndOf="@+id/img_square1" />
 
     <ImageView
         android:id="@+id/img_fruit3"
@@ -99,9 +101,9 @@
         android:id="@+id/img_fruit4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/img_fruit3"
-        android:layout_alignStart="@+id/img_fruit2"
-        app:srcCompat="@mipmap/fruit" />
+        app:srcCompat="@mipmap/fruit"
+        android:layout_alignBottom="@+id/tv_num3"
+        android:layout_alignStart="@+id/img_fruit2" />
 
     <TextView
         android:id="@+id/tv_num1"
@@ -144,7 +146,6 @@
         android:layout_alignBottom="@+id/img_fruit4"
         android:layout_alignStart="@+id/tv_num2"
         android:text="10" />
-
 
 
 </RelativeLayout>
