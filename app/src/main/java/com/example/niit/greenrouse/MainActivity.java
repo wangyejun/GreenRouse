@@ -1,5 +1,6 @@
 package com.example.niit.greenrouse;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         return super.onKeyDown(keyCode, event);
     }
 
+
     private void initView() {
         radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
 
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tv_versionName.setText(getString(R.string.app_name)+":"+AppUtil.getVersionName(MainActivity.this));
         radioGroup.setOnCheckedChangeListener(this);
     }
+
 
     @Override
     protected void onResume() {

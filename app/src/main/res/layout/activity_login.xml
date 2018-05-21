@@ -21,7 +21,6 @@
             android:id="@+id/et_LoginName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@android:color/transparent"
@@ -92,7 +91,6 @@
                 android:layout_gravity="center_horizontal"
                 android:text="马上注册"
                 android:textColor="@android:color/holo_blue_bright" />
-
         </LinearLayout>
     </LinearLayout>
 

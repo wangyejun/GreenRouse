@@ -2,6 +2,8 @@ package com.example.niit.greenrouse.Fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SlidingPaneLayout;
@@ -32,6 +34,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home,container,false);
+
     }
 
     @Override
@@ -70,7 +73,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.iv_scan:
                 Intent intent = new Intent(getActivity(),CaptureActivity.class);
                 startActivityForResult(intent,REQUEST_CODE_SCAN);
-
                 break;
         }
     }

@@ -3,6 +3,7 @@
     package="com.example.niit.greenrouse">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <user-permission android:name="READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
