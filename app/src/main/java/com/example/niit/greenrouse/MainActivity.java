@@ -1,7 +1,11 @@
 package com.example.niit.greenrouse;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -18,6 +22,15 @@ import com.example.niit.greenrouse.Fragment.KnapsackFragment;
 import com.example.niit.greenrouse.Fragment.TradeFragment;
 import com.example.niit.greenrouse.Fragment.WalkFragment;
 import com.example.niit.greenrouse.util.AppUtil;
+import com.vondear.rxtools.RxPhotoTool;
+import com.vondear.rxtools.view.dialog.RxDialogChooseImage;
+import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.UCropActivity;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import cn.bmob.v3.Bmob;
 
@@ -32,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private TextView tv_versionName;//侧滑菜单-版本号
 
     public SlidingPaneLayout slidingPane;
+
+    private RxDialogChooseImage mDialog;
+    private Uri mUri;
+    private File mFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,18 +77,16 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
 
     private void initView() {
-        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        radioGroup = findViewById(R.id.radiogroup);
+        iv_head_show = findViewById(R.id.iv_head_show);
+        tv_head_show = findViewById(R.id.tv_head_show);
+        btn_donation = findViewById(R.id.btn_donation);
+        btn_my_exchange = findViewById(R.id.btn_my_exchange);
+        btn_my_work = findViewById(R.id.btn_my_work);
+        tv_versionName = findViewById(R.id.tv_versionName);
+        slidingPane= findViewById(R.id.slidingPane);
 
-
-        iv_head_show = (ImageView) findViewById(R.id.iv_head_show);
-        tv_head_show = (TextView) findViewById(R.id.tv_head_show);
-        btn_donation = (Button) findViewById(R.id.btn_donation);
-        btn_my_exchange = (Button) findViewById(R.id.btn_my_exchange);
-        btn_my_work = (Button) findViewById(R.id.btn_my_work);
-        tv_versionName = (TextView) findViewById(R.id.tv_versionName);
-
-        slidingPane= (SlidingPaneLayout) findViewById(R.id.slidingPane);
-
+        iv_head_show.setOnClickListener(this);
         btn_donation.setOnClickListener(this);
         btn_my_exchange.setOnClickListener(this);
         btn_my_work.setOnClickListener(this);
@@ -106,8 +121,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             case R.id.rb_walk:
                 getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new WalkFragment()).commit();
                 break;
-            case R.id.rb_knapsack:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framlayout, new KnapsackFragment()).commit();
         }
 
     }
@@ -116,6 +129,9 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_head_show:
+                chooseImage();
+                break;
             case R.id.btn_donation:
                 Toast.makeText(this, "公益捐款", Toast.LENGTH_SHORT).show();
                 break;
@@ -127,4 +143,106 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 break;
         }
     }
+    private void chooseImage() {
+        if (mDialog==null){
+            mDialog=new RxDialogChooseImage(this, RxDialogChooseImage.LayoutType.TITLE);
+        }
+        if (!mDialog.isShowing()){
+            mDialog.show();
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            //选择相册之后的处理
+            case RxPhotoTool.GET_IMAGE_FROM_PHONE:
+                if (resultCode == RESULT_OK) {
+                    initUCrop( data.getData());
+                }
+                break;
+            //选择照相机之后的处理
+            case RxPhotoTool.GET_IMAGE_BY_CAMERA:
+                if (resultCode == RESULT_OK) {
+                    initUCrop(RxPhotoTool.imageUriFromCamera);
+                }
+                break;
+            //普通裁剪后的处理
+            case RxPhotoTool.CROP_IMAGE:
+                GlideApp.with(this)
+                        .load(RxPhotoTool.cropImageUri)
+                        .placeholder(R.mipmap.show)
+                        .error(R.mipmap.show)
+                        .error(R.mipmap.ic_launcher_round)
+                        .into(iv_head_show);
+                break;
+            //UCrop裁剪之后的处理
+            case UCrop.REQUEST_CROP:
+                if (resultCode == RESULT_OK) {
+                    mUri = UCrop.getOutput(data);
+                    mFile = roadImageView(mUri);
+                }
+                break;
+            //UCrop裁剪错误之后的处理
+            case UCrop.RESULT_ERROR:
+                final Throwable cropError = UCrop.getError(data);
+                break;
+            default:
+                break;
+        }
+
+    }
+    private void initUCrop( Uri data) {
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA);
+        long time = System.currentTimeMillis();
+        String imageName = timeFormatter.format(new Date(time));
+
+        Uri destinationUri = Uri.fromFile(new File(this.getCacheDir(), imageName + ".jpeg"));
+
+        UCrop.Options options = new UCrop.Options();
+        //设置裁剪图片可操作的手势
+        options.setAllowedGestures(UCropActivity.SCALE, UCropActivity.ROTATE, UCropActivity.ALL);
+        //设置隐藏底部容器，默认显示
+        options.setHideBottomControls(true);
+        //设置toolbar颜色
+        options.setToolbarColor(ActivityCompat.getColor(this, R.color.colorPrimary));
+        //设置状态栏颜色
+        options.setStatusBarColor(ActivityCompat.getColor(this, R.color.colorPrimaryDark));
+        //开始设置
+        //设置最大缩放比例
+        options.setMaxScaleMultiplier(5);
+        //设置图片在切换比例时的动画
+        options.setImageToCropBoundsAnimDuration(666);
+        //设置裁剪窗口是否为椭圆
+        options.setCircleDimmedLayer(true);
+        //设置是否展示矩形裁剪框
+        options.setShowCropFrame(false);
+
+        //设置竖线的数量
+        options.setCropGridColumnCount(0);
+        //设置横线的数量
+        options.setCropGridRowCount(0);
+
+        UCrop.of(data, destinationUri)
+                .withAspectRatio(1, 1)
+                .withMaxResultSize(1000, 1000)
+                .withOptions(options)
+                .start(this);
+    }
+
+    /**
+     * 从Uri中加载图片 并将其转化成File文件返回
+     *
+     * @param mUri
+     * @return
+     */
+    private File roadImageView(Uri mUri) {
+        GlideApp.with(this)
+                .load(mUri)
+                .placeholder(R.mipmap.show)
+                .error(R.mipmap.show)
+                .into(iv_head_show);
+        return new File(RxPhotoTool.getImageAbsolutePath(this, mUri));
+    }
+
 }

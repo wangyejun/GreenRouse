@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/backdrop"
+    android:orientation="vertical"
     tools:context="com.example.niit.greenrouse.Fragment.WalkFragment">
 
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentInsetRight="10dp">
+        app:contentInsetRight="10dp"
+        android:id="@+id/toolbar4">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,6 +24,7 @@
             android:layout_gravity="center"
             android:textColor="#fff"/>
         <ImageView
+            android:id="@+id/sharewalk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/share"
@@ -29,62 +32,31 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <ImageView
-        android:id="@+id/img_greenback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        app:srcCompat="@mipmap/greenback"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <FrameLayout
+        android:id="@+id/main_frame_container"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/toolbar4"
+        android:layout_centerHorizontal="true">
 
-    <ImageView
-        android:id="@+id/img_greenwalk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/img_greenback"
-        android:layout_alignTop="@+id/img_greenback"
-        android:layout_marginStart="147dp"
-        android:layout_marginTop="67dp"
-        app:srcCompat="@mipmap/greenwalk" />
+        <TextView
+            android:id="@+id/main_text_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textSize="40sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
 
-    <ImageView
-        android:id="@+id/img_sqear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/sqear"
-        android:layout_below="@+id/img_greenback"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:id="@+id/img_fruit"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@mipmap/fruit"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="41dp"
-        android:layout_alignBottom="@+id/img_sqear"
-        android:layout_alignEnd="@+id/img_greenback" />
-
-    <TextView
-        android:id="@+id/tv_duihuan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:layout_marginStart="41dp"
-        android:text="可兑换"
-        android:layout_alignBottom="@+id/img_fruit"
-        android:layout_alignStart="@+id/img_greenback" />
-
-    <TextView
-        android:id="@+id/tv_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:textColor="#FFAABB"
-        android:text="10"
-        android:layout_alignBottom="@+id/img_fruit"
-        android:layout_toStartOf="@+id/img_fruit"
-        android:layout_marginEnd="27dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今日步数"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"/>
+    </FrameLayout>
 
 </RelativeLayout>

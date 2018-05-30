@@ -68,14 +68,7 @@
                 android:button="@null"
                 android:gravity="center_horizontal" />
 
-            <RadioButton
-                android:id="@+id/rb_knapsack"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:background="@mipmap/knapsack"
-                android:gravity="center_horizontal" />
+
         </RadioGroup>
 
     </LinearLayout>

@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/fruit"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="50dp"
         android:layout_above="@+id/img_square4"
         android:layout_toEndOf="@+id/img_square1" />
 

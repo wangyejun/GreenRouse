@@ -1,21 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "com.example.niit.greenrouse"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "测试"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    configurations{
+        all*.exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 }
 
@@ -24,12 +28,35 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('libs/core-3.3.0.jar')
     compile 'cn.bmob.android:bmob-sdk:3.5.5'
     compile 'cn.bmob.android:http-legacy:1.0'
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
-    compile 'com.android.support:support-v4:25.3.1'
     compile 'cn.bmob.android:http-legacy:1.0'
+    compile 'com.github.vondear:RxTools:v1.7.8.3'
     testCompile 'junit:junit:4.12'
+    compile('com.github.yalantis:ucrop:2.2.2') {
+        transitive = true
+        exclude module: 'okio'
+    }
+    compile 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile files('libs/lite-orm-1.7.0.jar')
+    compile files('libs/MobCommons-2018.0523.1925.jar')
+    compile files('libs/MobTools-2018.0523.1923.jar')
+    compile files('libs/ShareSDK-Core-3.2.0.jar')
+    compile files('libs/ShareSDK-Email-3.2.0.jar')
+    compile files('libs/ShareSDK-Facebook-3.2.0.jar')
+    compile files('libs/ShareSDK-QQ-3.2.0.jar')
+    compile files('libs/ShareSDK-QZone-3.2.0.jar')
+    compile files('libs/ShareSDK-ShortMessage-3.2.0.jar')
+    compile files('libs/ShareSDK-SinaWeibo-3.2.0.jar')
+    compile files('libs/ShareSDK-TencentWeibo-3.2.0.jar')
+    compile files('libs/ShareSDK-Twitter-3.2.0.jar')
+    compile files('libs/ShareSDK-Wechat-3.2.0.jar')
+    compile files('libs/ShareSDK-Wechat-Core-3.2.0.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-3.2.0.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-3.2.0.jar')
 }
